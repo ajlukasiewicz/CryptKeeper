@@ -84,7 +84,7 @@ print(search_coords,sigma_factors,start_codons,sigma_site)
     
 start_coords = [i.split('_',3)[2] for i in search_coords] 
 print(start_coords)
-end_coords = [i.split('_',3)[2]for i in search_coords]
+end_coords = [i.split('_',3)[3]for i in search_coords]
 print(end_coords)
 sigma_one = [i.split(',',1)[0] for i in sigma_site]
 print(sigma_one)
@@ -103,9 +103,9 @@ print(sigma_two)
 
 
 with open('RNA1_summary_corrected.bed','w') as corrected_bed:
-    writer = csv.write(corrected_bed, delimiter = '\t', newline = '\n')
+    writer = csv.write(corrected_bed, delimiter = '\t')
     writer.writerows(zip(search_coords,start_coords,end_coords,sigma_factors,direction,start_codons, sigma_one,sigma_two ))
-    
+    corrected_bed.close()
 
     
     
